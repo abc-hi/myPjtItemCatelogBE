@@ -23,7 +23,7 @@ export const createItem = async (req, res) => {
 //getproduct
 export const getItem = async (req, res) => {
   //  http://localhost:5000/api/item/get-item
-
+// id:database field name
   try {
     const getObj = await ItemCatelog.find().sort({ id: 1 })
     res.status(200).json({ message: "the products are:", data: getObj })
@@ -100,7 +100,7 @@ export const userRegister = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ email, username, password: hashPassword })
     await newUser.save()
-    res.status(200).json({ message: "Register successful", data: newUser })
+    res.status(200).json({ message: "Registeration successful", data: newUser })
   } catch (error) {
     res.status(500).json({ error: "Registeration failed, Internal server error" })
   }
